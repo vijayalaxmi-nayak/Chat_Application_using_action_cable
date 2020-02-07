@@ -1,0 +1,22 @@
+<h3 style="text-align:center;">Posts</h3>
+<div id="postbox" style="height:150px; solid 1px #222222;overflow-y:scroll">
+    <% @posts.each do |post| %>
+        <%= render 'posts/post', post: post %>
+    <% end %>
+</div>
+<%= form_with model: @post do |f| %>
+    <%= f.text_field :body, placeholder: "Post something...", class: "form-control" %>
+    <%= f.submit "Post", class:"btn btn-primary" %>
+<% end %>
+
+
+<h3 style="text-align:center;">Comments</h3>
+<div id="commentbox" style="height:150px; solid 1px #222222;overflow-y:scroll">
+    <% @comments.each do |comment| %>
+        <%= render 'comments/comment', comment: comment %>
+    <% end %>
+</div>
+<%= form_with model: @comment do |form| %>
+    <%= form.text_field :body_comment, placeholder: "Comment Something...",class:"form-control" %>
+    <%= form.submit "Comment", class: "btn btn-secondary" %>
+<% end %>
